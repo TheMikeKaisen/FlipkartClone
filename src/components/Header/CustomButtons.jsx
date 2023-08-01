@@ -11,7 +11,6 @@ const Wrapper = styled(Box)`
     & > p{
         margin : 15px;
         font-size: 16px;
-        // margin-top: 10px;
         align-items: center;
         
     }
@@ -20,7 +19,7 @@ const Container = styled(Box)`
     display: flex;
     align-items: center;
     margin-left: 25px;
-    // margin-top: 10px;
+    
 `
 const LoginButton = styled(Button)`
     color: #2874f0;

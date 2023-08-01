@@ -9,6 +9,7 @@ const Component = styled(Box)`
 `
 const Container = styled(Box)`
     padding: 12px 8px;
+    text-aligned: center;
 `
 const Text = styled(Typography)`
     font-sized: 14px;
