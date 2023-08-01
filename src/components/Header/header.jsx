@@ -2,6 +2,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Box, Typography, styled} from '@mui/material';
 import Search from './Search';
+import CustomButtons from './CustomButtons';
 
 // We can style the components of material ui with css using styled components. But whenever we style a mui component and store the changes to a variable, we have to replace the name of the component in the body with the variable name (capital)
 const StyledHeader = styled(AppBar)`
@@ -46,6 +47,7 @@ const Header = () => {
               </Component>
             </Typography>
             <Search/>
+            <CustomButtons/>
           </Toolbar>
         </StyledHeader>
         
