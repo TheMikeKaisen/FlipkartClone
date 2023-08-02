@@ -10,3 +10,8 @@
 * why nodemon ?
 - when we start the server and then make changes to it, we will have to restart the server again and again for the changes to be displayed. This problem is handled by the library nodemon.
 
+In the scripts inside package.js, replaced: "start": "node index.js" with ""start": "nodemon index.js",
+
+now when we run npm start, nodemon server will run 
+
+
