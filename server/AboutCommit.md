@@ -1,17 +1,21 @@
-- created a server file to work on backend data.
-- installed expressjs
-- added port.
-- created package.json file
+- created a database using mongoDB.
+- created a database folder where the connection is established between mongoDB and server. This is done by using mongoose.
 
-- added line : "start": "node index.js" in package.json to start the server by using command "npm start"
+- established connection between server and database by importing:import Connection from './database/db.js';
+and calling Connection(); function.
 
-- installed nodemon.
+- took the url in db from mongo server.
 
-* why nodemon ?
-- when we start the server and then make changes to it, we will have to restart the server again and again for the changes to be displayed. This problem is handled by the library nodemon.
+- imported dotenv by : npm i dotenv
+* Why dotenv ?
+- while providing url for the establishment of connection between server and client, we have to mention the username and password in the url only, which is considered to be a bad practice. Thus it is important to import dotenv and make .env file where our username and the possword will be stored.
 
-In the scripts inside package.js, replaced: "start": "node index.js" with ""start": "nodemon index.js",
+- importing dotenv in index.js: import dotenv from 'dotenv';
+- intitialization: dotenf.config();
+- created .env file directly inside server folder and added user and password to it.
+- we can acces the user and password by using process.env.<username/password>; 
 
-now when we run npm start, nodemon server will run 
+
+
 
 
