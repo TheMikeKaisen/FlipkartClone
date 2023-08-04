@@ -9,12 +9,13 @@ const Component = styled(Box)`
 `
 const Container = styled(Box)`
     padding: 12px 8px;
-    text-aligned: center;
+    text-align: center;
 `
 const Text = styled(Typography)`
     font-sized: 14px;
     font-weight: 600;
     font-family: inherit;
+    
 `
 const NavBar=()=>{
     return(
