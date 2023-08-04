@@ -1,5 +1,5 @@
 
-
+import { useState } from 'react'
 import {Dialog, Box, TextField, Typography, Button, styled} from '@mui/material'
 
 
@@ -12,8 +12,8 @@ const Component = styled(Box)`
 const Image = styled(Box)`
     background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png
     ) center 85% no-repeat;
-    height: 100%;
-    width: 40%;
+    height: 84.2%;
+    width: 28%;
     padding: 45px 35px;
     & > p, & > h5{
         color: #fff;
@@ -60,27 +60,60 @@ const CreateAccount = styled(Typography)`
 // main function
 const LoginDialog = ( { open, setOpen } ) =>{
 
+    const accountInitialValue = {
+        login:{
+            view: 'login',
+            Heading: "Login", 
+            subHeading: 'Get access to your Orders, Wishlist and Recommendation'
+        },
+        signup: {
+            view: 'signup',
+            Heading: "Looks like you're new here!",
+            subHeading: "Sign up with your mobile number to get started"
+        }
+        }
+    
+    const toggleSignup=() => {
+        toggleAccount(accountInitialValue.signup);
+    }
+    
+    //state
+    const [account, toggleAccount] = useState(accountInitialValue.login);
+
+
     const handleClose = () => {
         setOpen(false);
+        toggleAccount(accountInitialValue.login);
     }
     return(
         <Dialog open={ open } onClose= {handleClose} PaperProps={{sx:{maxWidth:'unset'}}}>
             <Component>
                 <Box style={{display:'flex', height: '100%'}}>
                     <Image>
-                        <Typography variant='h5'>Login</Typography>
-                        <Typography style= {{marginTop: '20px'}}>Get access to your Orders, Wishlist and Recommendation</Typography>
+                        <Typography variant='h5'>{account.Heading}</Typography>
+                        <Typography style= {{marginTop: '20px'}}>{account.subHeading}</Typography>
                     </Image>
-
-                    <Wrapper>
-                        <TextField variant = "standard" label = "Enter Email/Mobile number"/>
-                        <TextField variant = "standard" label = "Enter password"/>
-                        <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
-                        <LoginButton>Login</LoginButton>
-                        <Typography style={{textAlign:"center"}}>OR</Typography>
-                        <RequestOTP>Reqeust OTP</RequestOTP>
-                        <CreateAccount>New to Flipkart? Create an account</CreateAccount>
-                    </Wrapper>
+                    { account.view === 'login' ?
+                        <Wrapper>
+                            <TextField variant = "standard" label = "Enter Email/Mobile number"/>
+                            <TextField variant = "standard" label = "Enter password"/>
+                            <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
+                            <LoginButton>Login</LoginButton>
+                            <Typography style={{textAlign:"center"}}>OR</Typography>
+                            <RequestOTP>Reqeust OTP</RequestOTP>
+                            <CreateAccount onClick={()=>toggleSignup()}>New to Flipkart? Create an account</CreateAccount>
+                        </Wrapper>
+                        :
+                        <Wrapper>
+                            <TextField variant = "standard" label = "Enter First Name"/>
+                            <TextField variant = "standard" label = "Enter Last Name"/>
+                            <TextField variant = "standard" label = "Enter Username"/>
+                            <TextField variant = "standard" label = "Enter Email"/>
+                            <TextField variant = "standard" label = "Enter password"/>
+                            <TextField variant = "standard" label = "Enter phone"/>
+                            <LoginButton>Continue</LoginButton>
+                        </Wrapper>
+                    }
                 </Box>
             </Component>
         </Dialog>
