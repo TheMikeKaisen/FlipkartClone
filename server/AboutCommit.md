@@ -1,21 +1,17 @@
-- created a database using mongoDB.
-- created a database folder where the connection is established between mongoDB and server. This is done by using mongoose.
+- created a constants folder and data.js in it. data.js contains all the data of the products.
 
-- established connection between server and database by importing:import Connection from './database/db.js';
-and calling Connection(); function.
+- created default.js which imports the products from data.js
 
-- took the url in db from mongo server.
+- created a model folder and "product-schema.js" in it.
+Product-schema.js contains the structure of how our product api will look like or we can say it defines a validation condition for api.
 
-- imported dotenv by : npm i dotenv
-* Why dotenv ?
-- while providing url for the establishment of connection between server and client, we have to mention the username and password in the url only, which is considered to be a bad practice. Thus it is important to import dotenv and make .env file where our username and the possword will be stored.
+- Like mySql, where a database is created and tables are added in the database, we create a mongoose model named "product".
+MongoDB is the database and in product-schema.js, we have added the properties. Now using those properties, we create table, or in react, we call it Collection.
 
-- importing dotenv in index.js: import dotenv from 'dotenv';
-- intitialization: dotenf.config();
-- created .env file directly inside server folder and added user and password to it.
-- we can acces the user and password by using process.env.<username/password>; 
+- After adding the structure of how the database will look like in schema, we will make a collection of it.
+    - const Product = mongoose.model('product', productSchema);
+    - here Product is the name of the collection which uses productSchema as the structure.
+    - then export Product.
 
-
-
-
+- Adding required and unique field to the product schema id will eliminate duplicate insertion. 
 
