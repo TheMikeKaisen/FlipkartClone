@@ -1,17 +1,14 @@
-## Sign Up Page
+## Fetching the values from signup text fields
+- onChange function tracks any changes in the textfield.
 
-### accountInitialValue
-- created an object "accountInitialValue" in which we have defined two more objects "login" and "signup".
-- "login" and "signup" will both contain three text values - "view", "Heading" and "subHeading".
+- while entering a value on signup texfield, it is replicated in the info tab from console. There is a list of content (json) in the info. Inside which there is a target property, inside which, there is a value, and value hold the content written in the textfield.
 
-### state
-- created a stae using useState which will hold the value of "account" and to update it, "toggleAccount"
-- initially, we set the value to "accountInitialValue.login"
-    - const [account, toggleAccount] = useState(accountInitialValue.login);
+    - syntheticBaseEvent(name of the object on change) -> target -> value -> <value>
+    - to access: console.log(e.target.value)
 
-### toggleSignup
-- created a function "toggleSignup" which will be used to toggle between login page and signup page.
-- when called, it will change the account state to accountInitialValue.signup
-    - const toggleSignup=() => {
-         toggleAccount(accountInitialValue.signup);
-     }
+## fetching
+
+1. created an object 'signupInitialValues' which will hold the values that are being entered.
+2. created a state which would update the values on change. It takes the object 'signupInitialValues' as initial argument.
+3. created an onchange function which will update the 'signupInitialValues' using setState property.
+

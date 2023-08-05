@@ -56,7 +56,14 @@ const CreateAccount = styled(Typography)`
     cursor: pointer;
 `
 
-
+const signupInitialValues= {
+    firstname: '', 
+    lastname: '', 
+    username: '', 
+    email:'', 
+    password: '', 
+    phone: ''
+}
 // main function
 const LoginDialog = ( { open, setOpen } ) =>{
 
@@ -76,14 +83,24 @@ const LoginDialog = ( { open, setOpen } ) =>{
     const toggleSignup=() => {
         toggleAccount(accountInitialValue.signup);
     }
+
+
     
     //state
     const [account, toggleAccount] = useState(accountInitialValue.login);
+    const [signup, setSignup] = useState(signupInitialValues)
 
 
     const handleClose = () => {
         setOpen(false);
         toggleAccount(accountInitialValue.login);
+    }
+
+    const onInputChange=(e) => {
+        setSignup({ ...signup, [e.target.name]:e.target.value}); 
+        console.log(signup);
+        // ... before signup will initialize the object with existing values in the object
+        // e.target.name is a variable. thus it is written inside squared brackets
     }
     return(
         <Dialog open={ open } onClose= {handleClose} PaperProps={{sx:{maxWidth:'unset'}}}>
@@ -105,12 +122,12 @@ const LoginDialog = ( { open, setOpen } ) =>{
                         </Wrapper>
                         :
                         <Wrapper>
-                            <TextField variant = "standard" label = "Enter First Name"/>
-                            <TextField variant = "standard" label = "Enter Last Name"/>
-                            <TextField variant = "standard" label = "Enter Username"/>
-                            <TextField variant = "standard" label = "Enter Email"/>
-                            <TextField variant = "standard" label = "Enter password"/>
-                            <TextField variant = "standard" label = "Enter phone"/>
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="firstname" label = "Enter First Name" />
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="lastname" label = "Enter Last Name"/>
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="username" label = "Enter Username"/>
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="email" label = "Enter Email"/>
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="password" label = "Enter password"/>
+                            <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="phone" label = "Enter phone"/>
                             <LoginButton>Continue</LoginButton>
                         </Wrapper>
                     }
