@@ -1,14 +1,19 @@
-## Fetching the values from signup text fields
-- onChange function tracks any changes in the textfield.
+## creating api and storing it in the server
 
-- while entering a value on signup texfield, it is replicated in the info tab from console. There is a list of content (json) in the info. Inside which there is a target property, inside which, there is a value, and value hold the content written in the textfield.
+1. created an onClick function for the button continue which would call another function 'signupUser' which would save the details as api.
 
-    - syntheticBaseEvent(name of the object on change) -> target -> value -> <value>
-    - to access: console.log(e.target.value)
+2. created a new folder service. and a new file in it 'api.js'
 
-## fetching
+3. installed a new library 'axios' -> npm install axios.
 
-1. created an object 'signupInitialValues' which will hold the values that are being entered.
-2. created a state which would update the values on change. It takes the object 'signupInitialValues' as initial argument.
-3. created an onchange function which will update the 'signupInitialValues' using setState property.
+- Axios: Axios is a Javascript library used to make HTTP requests from node. js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
 
+Here axios will be used to call api. 
+
+4. - import axios in the api.js
+   - use axios.post to post the data on the url.
+   - axios takes two arguments - url and the data which have to be saved.
+   - url = 'http:/localhost:8000/signup' where the api will be saved. 
+   - export the function authenticateSignup
+
+5. - import the authenticateSignup in loginDialog and use it inside signupUser function.

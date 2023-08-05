@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import {Dialog, Box, TextField, Typography, Button, styled} from '@mui/material'
 
+import { authentiateSignup } from '../../service/api'
 
 // styled components
 const Component = styled(Box)`
@@ -98,9 +99,12 @@ const LoginDialog = ( { open, setOpen } ) =>{
 
     const onInputChange=(e) => {
         setSignup({ ...signup, [e.target.name]:e.target.value}); 
-        console.log(signup);
         // ... before signup will initialize the object with existing values in the object
         // e.target.name is a variable. thus it is written inside squared brackets
+    }
+
+    const signupUser = async()=>{
+        let response = await authentiateSignup(signup);
     }
     return(
         <Dialog open={ open } onClose= {handleClose} PaperProps={{sx:{maxWidth:'unset'}}}>
@@ -128,7 +132,7 @@ const LoginDialog = ( { open, setOpen } ) =>{
                             <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="email" label = "Enter Email"/>
                             <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="password" label = "Enter password"/>
                             <TextField variant = "standard" onChange={(e) => onInputChange(e)} name ="phone" label = "Enter phone"/>
-                            <LoginButton>Continue</LoginButton>
+                            <LoginButton onClick={() => signupUser()}>Continue</LoginButton>
                         </Wrapper>
                     }
                 </Box>
