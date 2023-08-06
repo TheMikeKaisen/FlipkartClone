@@ -1,17 +1,19 @@
-- created a constants folder and data.js in it. data.js contains all the data of the products.
+## Adding express.Router
+- express.Router() is a feature in the Express.js framework for Node.js that allows you to create modular and reusable sets of routes. 
 
-- created default.js which imports the products from data.js
+1. Created a folder 'controller' inside which 'user-controller.js' is made. A function 'userSignup' is defined which would take 'request' and 'response' as argument. 
 
-- created a model folder and "product-schema.js" in it.
-Product-schema.js contains the structure of how our product api will look like or we can say it defines a validation condition for api.
+2. Created a folder 'routes' to handle routes of the server. Created 'route.js' inside which we import the function 'userSignup' from 'user-controller.js' .
 
-- Like mySql, where a database is created and tables are added in the database, we create a mongoose model named "product".
-MongoDB is the database and in product-schema.js, we have added the properties. Now using those properties, we create table, or in react, we call it Collection.
+note: now, when u go to the signup page, add the credentials, and press continue, it would give an error in the network tab. This is because you are trying to fetch a data between two different servers. i.e. you are trying to fetch the sign up credentials from localhost:3000 to localhost:8000. To handle this error, we import a library 'cors'.
 
-- After adding the structure of how the database will look like in schema, we will make a collection of it.
-    - const Product = mongoose.model('product', productSchema);
-    - here Product is the name of the collection which uses productSchema as the structure.
-    - then export Product.
+3. - npm i cors
+   - import cors in index.js
+   - add app.use(cors()) 
 
-- Adding required and unique field to the product schema id will eliminate duplicate insertion. 
+note: the latest versions of express cannot handle post request as efficiently, thus we need to install another library called ' body-parser '.
 
+4. - npm i body-parser
+   - import body-parser
+
+now when the data is passed to the signup page. hit enter and the data will be displayed in the vscode console.
