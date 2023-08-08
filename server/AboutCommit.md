@@ -1,23 +1,39 @@
-## adding a new Collection
+## To display the name of the user after successfully loggin in.
 
-1. Created a new schema 'user-schema.js' in model.
-   - The idea is the verify the details from the signup page to a schema. i.e. if the provided value is a string or not, or should it be unique, or if the field should be required , etc.
-   - so we create a model 'user' and export it. 
+## Server Folder
 
-2. - In the 'user-controller.js', we import User.
-   - check if the username already exists or not.
-        - **const exist = await User.findOne({ username: request.body.username});**
+1. In the user-controller.js, a new funtion 'userLogin' is defined.
+2. When it gets, a request, it would check for two variables in the database -> 'username' and 'password'
+    -**let user = await User.findOne({username: username, password: password});**
 
-   - If it does, return an error message.
-        - **if(exist){**
-            **return response.status(401).json({message: 'Username already exist'});**
-        **}** 
+3. If there exists, a user in the database with the same 'username' and 'password', then it would return a response:
+    -**return response.status(200).json({data : user});**
 
-3. - create a user with the request.body, i.e. the details provided in the signup page.
-        - **const user = request.body;**
-   - create a newUser.
-        - **const newUser = new User(user);**
-          **await newUser.save();**
+4. If not, it simply returns, invalid login, in the payload section of networks as an error.
 
-4. If everything works properly, respond with status 200.
-4. If an error occurs,respond with status 500 and an error message.
+5. In server/Routes/route.js, we import 'userLogin' function.
+6. Add a new route
+    -**Router.post('/login', userLogin);**
+
+
+## Client Folder
+
+1. - Inside Client/src/service/api.js, we make a new function 'authenticateLogin' which is an asynchonous function.
+   - It takes json data as props.
+   - This data is posted in http://localhost:8000/**login**
+
+2. - In Client/src/components/login/LoginDialog.jsx, we import 'authenticateLogin' function.
+   - Define a json file with initial values of login data, that is, empty strings for username and password.
+        - const loginInitialValues = {
+                    username: '', 
+                    password: ''
+                }  
+   - Create a state using hook 'useState' with state variable 'login' and update function 'setLogin' and initialize with the data 'loginInitialValues'
+   - Defined 'onValueChange' function to track the changes while typing the values and updating the data.
+   - Defined loginUser function, which would run when login button is clicked.
+   - Here, we call 'authenticateLogin', and pass login as an argument.
+   - In response we get the data of the user if exists, as defined in the 'user-controller.js'.
+   - We print the data in the console, and in it, the firstname is found in : response/data/data/firstname
+   - To print the firstname of the user at the login button's place, we define a condition that if response.status === 200, i.e. user exists, then set account to 'response.data.data.firstname'.
+
+
