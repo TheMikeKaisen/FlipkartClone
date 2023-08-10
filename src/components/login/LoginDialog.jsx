@@ -61,6 +61,13 @@ const CreateAccount = styled(Typography)`
     font-weight: 600;
     cursor: pointer;
 `
+const Error = styled(Typography)`
+    font-size: 12px;
+    color: #ff6161;
+    font-weight: 600;
+    margin-top: 10px;
+    line-height: 0;
+`
 
 const signupInitialValues= {
     firstname: '', 
@@ -74,6 +81,7 @@ const loginInitialValues = {
     username: '', 
     password: ''
 }
+
 // main function
 const LoginDialog = ( { open, setOpen } ) =>{
 
@@ -100,6 +108,7 @@ const LoginDialog = ( { open, setOpen } ) =>{
     const [account, toggleAccount] = useState(accountInitialValue.login);
     const [signup, setSignup] = useState(signupInitialValues);
     const [login, setLogin] = useState(loginInitialValues);
+    const [error, setError] = useState(false);
 
     //context
     const {setAccount} = useContext(DataContext);
@@ -108,6 +117,7 @@ const LoginDialog = ( { open, setOpen } ) =>{
     const handleClose = () => {
         setOpen(false);
         toggleAccount(accountInitialValue.login);
+        setError(false);
     }
 
     const onInputChange=(e) => {
@@ -134,6 +144,9 @@ const LoginDialog = ( { open, setOpen } ) =>{
             handleClose();
             setAccount(response.data.data.firstname);
         }
+        else {
+            setError(true);
+        }
         
     }
     
@@ -147,7 +160,11 @@ const LoginDialog = ( { open, setOpen } ) =>{
                     </Image>
                     { account.view === 'login' ?
                         <Wrapper>
-                            <TextField variant = "standard" onChange={(e) => onValueChange(e)} name ="username" label = "Enter Email/Mobile number"/>
+                            <TextField variant = "standard" onChange={(e) => onValueChange(e)} name ="username" label = "Enter Username"/>
+
+                            {error && <Error> Please enter valid username of password</Error>}
+                            {/* When the password is false, it will provide this error. */}
+
                             <TextField variant = "standard" onChange={(e) => onValueChange(e)} name ="password" label = "Enter password"/>
                             <Text>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</Text>
                             <LoginButton onClick={() => loginUser()}>Login</LoginButton>
@@ -171,5 +188,6 @@ const LoginDialog = ( { open, setOpen } ) =>{
         </Dialog>
     )
 }
+
 
 export default LoginDialog;
