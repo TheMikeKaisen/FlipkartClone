@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { bannerData } from '../../constants/data';
 import { styled } from '@mui/material';
 
+
 const Image = styled('img')({
     width: '100%',
     height: 280  

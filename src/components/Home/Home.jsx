@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 //components
 import NavBar from "./NavBar";
 import Banner from "./Banner";
+import Slide from "./slide";
+
+
 import { Box, styled } from "@mui/material";
 
 
@@ -26,6 +29,12 @@ const Home=()=>{
         <NavBar/>
         <Component>
             <Banner/>
+            <Slide products ={products}/>
+            <Slide products ={products}/>
+            <Slide products ={products}/>
+            <Slide products ={products}/>
+            <Slide products ={products}/>
+            <Slide products ={products}/>
         </Component>
 
         </>
