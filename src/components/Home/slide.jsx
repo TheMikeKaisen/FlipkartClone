@@ -2,9 +2,7 @@
 import Carousel from 'react-multi-carousel';
 import  'react-multi-carousel/lib/styles.css'
 
-import countdown from 'react-countdown';
-
-import { Box, Button, Typography, Divider, typographyClasses } from '@mui/material';
+import { Box, Button, Typography, Divider } from '@mui/material';
 import styled from '@emotion/styled';
 import Countdown from 'react-countdown';
 const responsive = {
@@ -64,7 +62,7 @@ const Text = styled(Typography)`
 
 
 
-const Slides = ( {products}) => {
+const Slides = ( {products, title, timer}) => {
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
 
     const renderer = ({hours, minutes, seconds}) => {
@@ -74,11 +72,14 @@ const Slides = ( {products}) => {
     return (
         <Component>
             <Deal>
-                <DealText>Deal of the Day</DealText>
-                <Timer>
-                    <img src = {timerURL} style={{width: 24}}  alt="timer" />
-                    <Countdown date = {Date.now() + 5.04e+7} renderer = {renderer} />
-                </Timer>
+                <DealText>{title}</DealText>
+                    {
+                        timer &&
+                        <Timer>
+                            <img src = {timerURL} style={{width: 24}}  alt="timer" />
+                            <Countdown date = {Date.now() + 5.04e+7} renderer = {renderer} />
+                        </Timer>
+                    }
                 <ViewAllButton variant= "contained" color="primary">View All</ViewAllButton>
             </Deal>
             <Divider/>
