@@ -1,4 +1,4 @@
-import { Box, Grid, styled } from "@mui/material"
+import { Grid, styled } from "@mui/material"
 
 import { imageURL } from "../../constants/data"
 
