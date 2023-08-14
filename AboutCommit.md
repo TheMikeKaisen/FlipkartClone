@@ -1,25 +1,24 @@
-## making the Website responsive
+## Creating a Detailed page about the product
 
-### Making the advertisement banner responsive
-To make an element responsive using material ui, we use the help of a  component called 'Grid'
-1.  - Import Grid from material ui
-    - used grid to make the advertisement banner responsive.
-    - Grid divides the screen into 12 column space. We can define how much columns should be taken by an element in large, medium, small and extra small screen.
-    - lg = {4}  -> this means that the particular grid element will take 4 columns of space in a large screen
-    - sm = {}   -> for small screen, md = {} -> medium screen, xs = {} -> for extra small screen.
+1.  - npm i react-router-dom
+    - import BrowserRouter, Routes and Route from react-router-dom in App.js.
+    - ### Browser Router
+        - BrowserRouter is a component provided by the React Router library. It uses HTML5's history API to manage the navigation state and render the appropriate component based on the current URL. It should be placed at the root level of your application.
 
-### adding covid image 
-2.  - added a covid image below the ad.
-    - used Media query to make it responsive.
+    - ### Routes
+        - Routes is a component introduced in react-router-dom version 6. It's an alternative to using a series of Route components within a BrowserRouter. It provides a more structured way of defining routes using JSX and is especially useful for nested routes and layouts.
 
-### Making the first slide responsive
-3.  - To make the advertisement on the first slide disappear in small screens.
-    - In 'src/components/Home/MidSlide.jsx', we made the styled components 'RightComponent' and 'LeftComponent' as objects by removing the backticks and the format of the css. This is necessary to use theme.breakpoint media query.
-    - In RightComponent, i.e the ad image, we added [theme.breakpoint.down('md')]: {display: 'none}, which would make the image disappear when screen is below medium range.
-    - In LeftComponent I added -> [theme.breakpoint.down('md')]: {width: '100%'}, which means, when the size of screen is below medium sized screens, the width of the RightCompnent becomes 100%, which earlier was defined 83% for all the screen. 
+    - ### Route
+        - Route is a component used to define a specific route and its corresponding component to be rendered when the URL matches the specified path. It's typically nested within a BrowserRouter.
 
-### Making the carousel responsive
-4.   - In 'src/components/Home/Banner.jsx' we add media query (theme.breakpoints.down) in the image. So that when the screen is below medium level, it will attain the height of 180 from 280 and zoom in respectively.
+    - Then wrap 'Home' and 'DetailView' component inside route.
 
-## Making the navbar responsive
-5. Used media query for smaller screen and made the margin 0.
+2.  - In 'component/Home/**slide.jsx**', import "**Link**" from react-router-dom.
+    - ### what is Link in React Router Dom ?
+        - Link component is used to create clickable links that navigate between different routes in your React application without triggering a full page reload. It's a crucial component for enabling client-side routing and providing a smooth user experience in single-page applications.
+    - Wrap the component inside Link tab for which we have to enable the routing.
+    - now, when we click any product from the slide, it will open the DetailView page, which currently is nothing but a text saying "Hello", with the id = <product id>.
+
+3.  - now, we want to go back to the home page when the flipcart icon at the Header is clicked.
+    - In 'components/Header/**header.jsx**', import  Link from react-router-dom.
+    - Wrap the component which hold flipkart logo and the text below it in 'Link' tab and link it to Home page. i.e. `<Link to = {'/'}>`, which will take us to the home page.

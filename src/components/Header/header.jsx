@@ -4,6 +4,9 @@ import { AppBar, Toolbar, Box, Typography, styled} from '@mui/material';
 import Search from './Search';
 import CustomButtons from './CustomButtons';
 
+import { Link } from 'react-router-dom';
+
+
 // We can style the components of material ui with css using styled components. But whenever we style a mui component and store the changes to a variable, we have to replace the name of the component in the body with the variable name (capital)
 const StyledHeader = styled(AppBar)`
     background: #2874f0;
@@ -12,12 +15,14 @@ const StyledHeader = styled(AppBar)`
 const Component = styled(Box)`
     margin-left: 220%;
     line-height: 0;
+    text-decoration: none;
 `
 const SubHeading = styled(Typography)`
     font-size: 10px;
     font-style: italic;
     display: flex; 
     align-items: center;
+    color: #fff;
 `
 const PlusImage = styled('img')({ // img is not a mui component. When styling non mui components using
                                   // styled, we use this syntax. 
@@ -36,15 +41,17 @@ const Header = () => {
         <StyledHeader position="static" color="primary">
           <Toolbar style={{minHeight: '55px'}}>
             <Typography>
-              <Component>
-                <img src = {logoURL} alt="logo" style={{width: 75}}/>
-                <Box style={{display: 'flex'}}>
-                    <SubHeading>Explore&nbsp;     {/*&nbsp adds a space after explore */}
-                        <Box component="span" style={{color:'yellow'}}>Plus</Box>
-                    </SubHeading>
-                    <PlusImage src ={subURL} alt = 'subUrl'/>
-                </Box>
-              </Component>
+              <Link to={'/'} style={{textDecoration:'none'}}>
+                <Component>
+                  <img src = {logoURL} alt="logo" style={{width: 75}}/>
+                  <Box style={{display: 'flex'}}>
+                      <SubHeading>Explore&nbsp;     {/*&nbsp adds a space after explore */}
+                          <Box component="span" style={{color:'yellow'}}>Plus</Box>
+                      </SubHeading>
+                      <PlusImage src ={subURL} alt = 'subUrl'/>
+                  </Box>
+                </Component>
+              </Link>
             </Typography>
             <Search/>
             <CustomButtons/>
