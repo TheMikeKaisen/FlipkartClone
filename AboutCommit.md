@@ -1,14 +1,19 @@
-## adding more properties to the slides.
+## making the Website responsive
 
-1. - creating props 
-        - title(for slides)
-        - timer(will show the countdown in the slides only if given true)
+### Making the advertisement banner responsive
+To make an element responsive using material ui, we use the help of a  component called 'Grid'
+1.  - Import Grid from material ui
+    - used grid to make the advertisement banner responsive.
+    - Grid divides the screen into 12 column space. We can define how much columns should be taken by an element in large, medium, small and extra small screen.
+    - lg = {4}  -> this means that the particular grid element will take 4 columns of space in a large screen
+    - sm = {}   -> for small screen, md = {} -> medium screen, xs = {} -> for extra small screen.
 
-2.  - In the actual website, there is an adevertisement joined with the first slide component.  
-    - Thus, we created a new file MidSlide.jsx in 'Home/' which would handle both slide and ad image.
+### adding covid image 
+2.  - added a covid image below the ad.
+    - used Media query to make it responsive.
 
-3. - Again, in the actual flipkart website, there are advertisement banners in the middle of random slides in the home page.
-    - so, we create a new file 'MidSection.jsx' which would contain a banner
-    - imported url of three images from 'https://drive.google.com/drive/folders/1mDT-2OQHusQrIt3VoECEAdoDu6y6W_N1'
-    - used it in the banner and imported it in Home.jsx
-    - declared it below Midslide component.
+### Making the first slide responsive
+3.  - To make the advertisement on the first slide disappear in small screens.
+    - In 'src/components/Home/MidSlide.jsx', we made the styled components 'RightComponent' and 'LeftComponent' as objects by removing the backticks and the format of the css. This is necessary to use theme.breakpoint media query.
+    - In RightComponent, i.e the ad image, we added [theme.breakpoint.down('md')]: {display: 'none}, which would make the image disappear when screen is below medium range.
+    - In LeftComponent I added -> [theme.breakpoint.down('md')]: {width: '100%'}, which means, when the size of screen is below medium sized screens, the width of the RightCompnent becomes 100%, which earlier was defined 83% for all the screen. 
