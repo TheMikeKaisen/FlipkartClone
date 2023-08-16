@@ -4,7 +4,25 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams} from 'react-router-dom';
 import { getProductDetails } from '../../redux/actions/productActions';
-import { Box, Typography } from '@mui/material';
+import { Box, styled, Grid } from '@mui/material';
+
+import ActionItem from './ActionItem';
+import ProductDetail from './ProductDetail';
+
+
+// styled components
+const Component = styled(Box)`
+    background: #f2f2f2;
+    margin-top: 55px;
+`
+const Container = styled(Grid)`
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+`
+const RightContainer = styled(Grid)`
+    margin-top: 50px;
+`
 const DetailView = () => {
 
     const dispatch = useDispatch();
@@ -21,20 +39,22 @@ const DetailView = () => {
 
     console.log(product);
     return (
-        
-        <Box>
+
+        <Component>
             {
                 product && Object.keys(product).length > 0 && // Check if the product object has any keys
-                <Box>
-                    <Box>
-
-                    </Box>
-                    <Box>
-                        <Typography>{product.title.longTitle}</Typography>
-                    </Box>
-                </Box>
+                <Container container>
+                    <Grid item lg={4} md ={4} sm = {8} xs = {12}>
+                        <ActionItem product = {product} />
+                        
+                    </Grid>
+                    <RightContainer item lg = {8} md = {8} sm={8} xs={12}>
+                        
+                        <ProductDetail product = {product} />
+                    </RightContainer>
+                </Container>
             }
-        </Box>
+        </Component>
     )
 }
 
