@@ -9,7 +9,7 @@ export const products = [
         title: {
             shortTitle: 'Home & Kitchen',
             longTitle: 'Pigeon FAVOURITE Electric Kettle  (1.5 L, Silver, Black)'
-        }, 
+        },
         price: {
             mrp: 1195,
             cost: 625,
