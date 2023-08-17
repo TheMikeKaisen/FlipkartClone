@@ -16,6 +16,7 @@ const Component = styled(Box)`
     margin-left: 220%;
     line-height: 0;
     text-decoration: none;
+    color: inherit;
 `
 const SubHeading = styled(Typography)`
     font-size: 10px;
@@ -30,6 +31,13 @@ const PlusImage = styled('img')({ // img is not a mui component. When styling no
     height: 10,
     marginLeft: 4
 })
+const CustomButtonWrapper = styled(Box)(({theme})=>({
+  margin: '0 5% 0 auto',
+  [theme.breakpoints.down('md')]:{
+    display: 'none'
+  }
+
+}))
 
 
 const Header = () => {
@@ -54,7 +62,9 @@ const Header = () => {
               </Link>
             </Typography>
             <Search/>
-            <CustomButtons/>
+            <CustomButtonWrapper>
+              <CustomButtons/>
+            </CustomButtonWrapper>
           </Toolbar>
         </StyledHeader>
         

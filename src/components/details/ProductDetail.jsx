@@ -1,4 +1,6 @@
 import {Box, Typography, styled} from '@mui/material';
+// table
+import {Table, TableBody, TableRow, TableCell} from '@mui/material';
 
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
@@ -15,10 +17,20 @@ const StyledBadge = styled(LocalOfferIcon)`
     color: #00CC00;
     font-size: 15px;
 `
+const ColumnText = styled(TableRow)`
+    font-size: 14px;
+    & > td {
+        font-size: 14px;
+        margin-top: 10px;
+        border: none;
+    }
+`
 
 
 const ProductDetail = ({product}) => {
     const fassured = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png';
+    const adURL = 'https://rukminim1.flixcart.com/lockin/774/185/images/CCO__PP_2019-07-14.png?q=50';
+    const date = new Date(new Date().getTime()+(5 * 24 * 60 * 60 * 100)); //converting 5 days time into milliseconds.
     return (
         <>
 
@@ -40,6 +52,36 @@ const ProductDetail = ({product}) => {
             <Typography><StyledBadge />5% Cashback on Flipkart Axis Band  Card</Typography>
             <Typography><StyledBadge />No Cost EMI on Bajaj Finserv EMI Card on Cart Value above ₹2999 T&C</Typography>
         </SmallText>
+        <Table>
+            <TableBody>
+                <ColumnText>
+                    <TableCell style={{color: '#878787'}}>Delivery</TableCell>
+                    <TableCell style={{fontWeight: 600 }}>Delivery by {date.toDateString()} | ₹40</TableCell>
+                </ColumnText>
+                <ColumnText>
+                    <TableCell style={{color: '#878787'}}>Warranty</TableCell>
+                    <TableCell >No Warranty</TableCell>
+                </ColumnText>
+                <ColumnText>
+                    <TableCell style={{color: '#878787'}}>Seller</TableCell>
+                    <TableCell>
+                        <Box component="span" style = {{color: '#2874f0'}}>SuperComNet</Box>
+                        <Typography>GST invoice available</Typography>
+                        <Typography>View more sellers starting from ₹{product.price.cost}</Typography>
+                    </TableCell>
+                </ColumnText>
+                <ColumnText>
+                    <TableCell colSpan={2}>
+                        <img src = {adURL} style={{width: 390}} alt = "flipkartPoints" />
+                    </TableCell>
+                </ColumnText>
+                <ColumnText>
+                    <TableCell style = {{ color : '#878787'}}>Description</TableCell>
+                    <TableCell>{product.description}</TableCell>
+                </ColumnText>
+
+            </TableBody>
+        </Table>
         </>
     )
 }

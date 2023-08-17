@@ -15,14 +15,20 @@ const Component = styled(Box)`
     background: #f2f2f2;
     margin-top: 55px;
 `
-const Container = styled(Grid)`
-    background: #fff;
-    display: flex;
-    flex-direction: row;
-`
-const RightContainer = styled(Grid)`
-    margin-top: 50px;
-`
+const Container = styled(Grid)(({theme})=>({
+    background: '#fff',
+    display: 'flex',
+    [theme.breakpoints.down('md')]:{
+        margin: 0
+    }
+
+}))
+const RightContainer = styled(Grid)(({theme}) =>({
+    marginTop: 50,
+    [theme.breakpoints.down('md')]: {
+        marginLeft: '20px'
+    }
+}))
 const DetailView = () => {
 
     const dispatch = useDispatch();
