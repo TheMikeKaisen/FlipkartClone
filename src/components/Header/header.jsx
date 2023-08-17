@@ -6,6 +6,18 @@ import CustomButtons from './CustomButtons';
 
 import { Link } from 'react-router-dom';
 
+// menu icon
+import { Menu } from '@mui/icons-material'
+// icon button 
+import {IconButton} from '@mui/material'
+// drawer
+import {Drawer} from '@mui/material'
+//list
+import {List, ListItem, ListItemButton} from '@mui/material'
+
+
+// state
+import { useState } from 'react';
 
 // We can style the components of material ui with css using styled components. But whenever we style a mui component and store the changes to a variable, we have to replace the name of the component in the body with the variable name (capital)
 const StyledHeader = styled(AppBar)`
@@ -39,15 +51,52 @@ const CustomButtonWrapper = styled(Box)(({theme})=>({
 
 }))
 
+const MenuButton = styled(IconButton)(({theme})=>({
+  display: 'none',
+  [theme.breakpoints.down('md')]:{
+    display: 'block',
+
+  }
+}))
 
 const Header = () => {
     const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
 
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+      setOpen(true);
+    }
+    const handleClose = () => {
+      setOpen(false);
+    }
+
+    const list = () => {
+      return (
+      <Box>
+        <List>
+          <ListItem>
+            <ListItemButton>
+              <CustomButtons />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Box>
+      )
+    }
     return (
         
         <StyledHeader position="static" color="primary">
           <Toolbar style={{minHeight: '55px'}}>
+            <MenuButton color='inherit' onClick={handleOpen}>
+              <Menu />
+            </MenuButton>
+
+            <Drawer open={open} onClose={handleClose}>
+              {list()}
+            </Drawer>
+
             <Typography>
               <Link to={'/'} style={{textDecoration:'none'}}>
                 <Component>
