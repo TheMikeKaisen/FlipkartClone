@@ -74,7 +74,7 @@ const Header = () => {
 
     const list = () => {
       return (
-      <Box>
+      <Box style={{width:200}} onClick={handleClose}>
         <List>
           <ListItem>
             <ListItemButton>

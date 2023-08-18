@@ -1,13 +1,15 @@
-## Wrapping components in menu icon
+## searching products in searchbar
 
-1.  - src/components/Header/header.js
-    - Importing **IconButton** fron mui material
-    - IconButton is a functionality provided by mui materials to wrap components inside an icon.
+- In src/components/Header/Search.jsx/
+- imported state and useEffect hooks.
+- initialized the state variable 'text' with an empty string ''. 
+- Created a **getText** function, which would call **setText**, which is the update function for state variable.
+- added onChange to the InputSearchBase. As soon as new text is entered, it would call **getText** and set the state variable to whatever has been typed on the searchBar.
 
-    - Import **Drawer** from material ui, which when clicked on menu icon, would open a drawer with the embedded components.
-    - creating function **onClick** and **onClose** for when the drawer is clicked.
+- Import **useSelector** and **useDispatch** from 'reac-redux'.
+- Import **getProducts** from 'redux/actions/productActions.js'.
+- Import **Link** from react-router-dom.
 
-    - Import List and ListItems from material ui.
-    - creating a new function list which would hold the customButton Items and display it, when the drawer is opened.
+- If there is a text entered in the searchBar, then only a list is displayed under the search Bar. 
 
-    - added theme properties to headers to handle the responsiveness.
+- here, the useEffect is responsible for fetching the initial product data when the component mounts. 
