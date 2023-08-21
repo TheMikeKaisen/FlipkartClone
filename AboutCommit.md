@@ -1,7 +1,6 @@
-## Removing items from cart
+## Adding an Empty Cart component
 
-- components/cart/CartItems.jsx 
-- import useDispatch from react-redux
-- import removeFromCart from redux/actions/cartActions.js
-- Inside the remove button tag, add the onClick propoerty which would call a function 'removeItemFromCart' with item.id as parameter.
-- inside the 'removeItemFromCart' , use dispatch function to call **removeFromCart** in cartActions to remove the item with the id provided in the function
+- created a new file 'EmptyCart.jsx' in 'src/components/cart'.
+- added images and texts in the same file in the function 'EmptyCart'.
+- imported the function in /cart/Cart.jsx.
+- In the **CustomButtons.jsx** under 'components/Header/', Replaced Box with **Link** and added path to Cart.

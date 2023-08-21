@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Box, Button, Typography, styled } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom';
 
 //components
 import LoginDialog from "../login/LoginDialog";
@@ -33,10 +34,12 @@ const Wrapper = styled(Box)(({theme})=>({
     }
 
 }))
-const Container = styled(Box)(({theme})=>({
+const Container = styled(Link)(({theme})=>({
     display: 'flex',
     alignItems: 'center',
+    textDecoration: 'none',
     marginLeft: '25px',
+    color: 'inherit',
     [theme.breakpoints.down('md')]:{
         display: 'block'
     }
@@ -71,7 +74,7 @@ const CustomButtons=()=>{
 
             <Typography style={{ width: 135}}>Become a Seller</Typography>
             <Typography >More</Typography>
-            <Container>
+            <Container to='/cart'>
                 <ShoppingCartIcon/>
                 <Typography>Cart</Typography>
             </Container>
