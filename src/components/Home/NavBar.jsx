@@ -7,6 +7,7 @@ const Component = styled(Box)(({theme})=>({
     margin: '5px 130px 0 130px',
     justifyContent: 'space-between',
     overflow: 'hidden', // gives a scroll bar when the screen is too small
+    
     [theme.breakpoints.down('lg')]:{
         margin: 0
     }
@@ -23,16 +24,18 @@ const Text = styled(Typography)`
 `
 const NavBar=()=>{
     return(
-        <Component>
-            {
-                navData.map(data => (
-                    <Container>
-                        <img src = {data.url} alt = "nav" style= {{width: 64}}/>
-                        <Text>{data.text}</Text>
-                    </Container>
-                ))
-            }
-        </Component>
+        <Box style={{background: '#fff' }}>
+            <Component>
+                {
+                    navData.map(data => (
+                        <Container>
+                            <img src = {data.url} alt = "nav" style= {{width: 64}}/>
+                            <Text>{data.text}</Text>
+                        </Container>
+                    ))
+                }
+            </Component>
+        </Box>
     )
 }
 export default NavBar;
