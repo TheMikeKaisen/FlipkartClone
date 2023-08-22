@@ -4,7 +4,7 @@ import axios from "axios";
 import * as actionTypes from '../constants/productConstant.js'
 
 
-const URL = 'http://localhost:8000'
+const URL = ''
 export const getProducts = () => async(dispatch) => { //this is how we use a react-thunk middleware.
     try {
         const { data } = await axios.get(`${URL}/products`); // object Destructuring

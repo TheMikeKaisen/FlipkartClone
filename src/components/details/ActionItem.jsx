@@ -12,6 +12,10 @@ import { useDispatch } from "react-redux";
 //cart Actions
 import { addToCart } from "../../redux/actions/cartActions";
 
+//paytm
+import { payUsingPaytm } from "../../service/api";
+import { post } from "../../utils/paytm";
+
 //styled Components
 const LeftContainer = styled(Box)(({theme})=>({
     minWidth: '40%',
@@ -50,13 +54,22 @@ const ActionItem = ({product}) =>{
         dispatch(addToCart(id, quantity));
         navigate('/cart');
     }
+
+    const buyNow = () => {
+        let response = payUsingPaytm({amount: 500, email: 'codeforinterview@gmail.com'})
+        let information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response
+        }
+        post(information);
+    }
     return(
         <LeftContainer>
             <Box style = {{ padding: '15px 20px', border: '1px solid #f0f0f0', marginBottom: 10}}>
                 <Image src = {product.detailUrl} alt="product"/>
             </Box>
             <StyledButton variant="contained" style = {{marginRight: 10, background: '#ff9f00'}}onClick={() => addItemToCart()}><ShoppingCartIcon/>Add to Cart</StyledButton>
-            <StyledButton variant="contained" style = {{ background: '#f35413'}}><FlashOnIcon />Buy Now</StyledButton>
+            <StyledButton variant="contained" onClick={()=>buyNow()} style = {{ background: '#f35413'}}><FlashOnIcon />Buy Now</StyledButton>
         </LeftContainer>
     )
 }
